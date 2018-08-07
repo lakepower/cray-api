@@ -45,5 +45,6 @@ spec:
   volumes:
   - name: local
     hostPath:
+# Change this to a local directory
 #      path:
       type: Directory
