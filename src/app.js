@@ -13,12 +13,16 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// Configuration
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Static Paths
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Route Definition
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 

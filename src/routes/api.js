@@ -5,10 +5,10 @@ const cardStore = require('../store/card');
 
 const spec = {
   openapi: '3.0.0',
-  servers: [{
-    description: 'Cray API Auto Mocking',
-    url: 'https://virtserver.swaggerhub.com/lakepower/cray-project/1.0.0'
-  }],
+  // servers: [{
+  //   description: 'Cray API Auto Mocking',
+  //   url: ''
+  // }],
   info: {
     description: 'Description',
     version: '0.0.1',
