@@ -12,8 +12,13 @@ spec:
   type: NodePort
   ports:
   - port: 3306
+    name: mysql
     protocol: TCP
     nodePort: 30000
+  - port: 33060
+    name: xdevapi
+    protocol: TCP
+    nodePort: 30001
   selector:
     app: mysql
 ---
@@ -34,11 +39,14 @@ spec:
     - name: MYSQL_PASSWORD
       value: mysql
     - name: MYSQL_DATABASE
-      value: sample
+      value: CRAY
     - name: MYSQL_ROOT_PASSWORD
       value: supersecret
     ports:
     - containerPort: 3306
+      name: mysql
+    - containerPort: 33060
+      name: xdevapi
     volumeMounts:
     - name: local
       mountPath: /var/lib/mysql
