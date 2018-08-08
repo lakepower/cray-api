@@ -10,7 +10,7 @@ card.get = () => {
       // Then send the whole payload
       const resultRows = [];
       return session
-        .getSchema('CRAY')
+        .getSchema('cray')
         .getTable('cards')
         .select()
         .execute((row) => {
@@ -29,7 +29,7 @@ card.createTable = () => {
     .then((session) => {
       return session
         .sql(`
-          CREATE TABLE CRAY.cards
+          CREATE TABLE cray.cards
           (
             id   int PRIMARY KEY NOT NULL AUTO_INCREMENT,
             name text
@@ -42,7 +42,7 @@ card.createTable = () => {
 card.insert = (data) => {
   return database.getSession()
     .then((session) => {
-      return session.getSchema('CRAY').getTable('cards');
+      return session.getSchema('cray').getTable('cards');
     })
     .then((table) => {
       return table.insert(['name']).values([data.name])

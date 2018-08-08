@@ -39,7 +39,7 @@ spec:
     - name: MYSQL_PASSWORD
       value: mysql
     - name: MYSQL_DATABASE
-      value: CRAY
+      value: cray
     - name: MYSQL_ROOT_PASSWORD
       value: supersecret
     ports:
@@ -53,6 +53,6 @@ spec:
   volumes:
   - name: local
     hostPath:
-# Change this to a local directory
-#      path:
+# Change this to a local directory $LOCAL_DIR/data
+#      path: /Users/{user}/Desktop/web/cray/cray-api/data
       type: Directory

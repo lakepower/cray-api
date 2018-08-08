@@ -1,4 +1,4 @@
-const test = require('tap').test;
+const { test } = require('tap');
 const dotenv = require('dotenv');
 const cardStore = require('./card');
 

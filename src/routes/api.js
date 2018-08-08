@@ -15,7 +15,7 @@ const spec = {
     title: 'Cray Project',
     termsOfService: '',
     contact: {
-      email: 'apiteam@swagger.io'
+      email: ''
     }
   },
   paths: {
