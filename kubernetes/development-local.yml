@@ -54,7 +54,7 @@ spec:
   - name: local
     hostPath:
       # Change this to a local directory $LOCAL_DIR/data
-      path: /Users/urihome/Desktop/web/cray/cray-api/data
+#      path: /Users/{user}/Desktop/web/cray/cray-api/data
       type: Directory
 ---
 apiVersion: v1
