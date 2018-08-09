@@ -53,6 +53,39 @@ spec:
   volumes:
   - name: local
     hostPath:
-# Change this to a local directory $LOCAL_DIR/data
-#      path: /Users/{user}/Desktop/web/cray/cray-api/data
+      # Change this to a local directory $LOCAL_DIR/data
+      path: /Users/urihome/Desktop/web/cray/cray-api/data
       type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: swagger
+  namespace: cray
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    name: swagger-port
+    protocol: TCP
+    nodePort: 30002
+  selector:
+    app: swagger
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: swagger
+  namespace: cray
+  labels:
+    app: swagger
+spec:
+  containers:
+  - name: swagger
+    image: swaggerapi/swagger-ui:v3.0.5
+    env:
+    - name: API_URL
+      value: http://localhost:3000/api/
+    ports:
+    - containerPort: 8080
+      name: swagger-port

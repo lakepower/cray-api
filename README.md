@@ -4,7 +4,7 @@ Edit the volume path in `kubernetes/mysql-local.yml` to a local folder
 
 Start database using kubernetes
 ```bash
-kubectl create -f kubernetes/mysql-local.yml
+kubectl create -f kubernetes/development-local.yml
 ```
 
 Copy .env.sample to .env with updated configuration
