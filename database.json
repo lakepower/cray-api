@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "mysql",
+    "host": "127.0.0.1",
+    "database": "cray",
+    "port": "30000",
+    "user": "root",
+    "password": "supersecret"
+  }
+}

@@ -5,6 +5,10 @@
   "scripts": {
     "start": "node ./bin/www",
     "develop": "nodemon ./bin/www",
+    "db:start": "kubectl create -f kubernetes/development-local.yml",
+    "db:destroy": "kubectl delete namespace cray",
+    "db:update": "db-migrate up",
+    "db:down": "db-migrate down",
     "debug": "node --inspect ./bin/www",
     "test": "tap src/**/*.test.js"
   },
@@ -22,6 +26,8 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "db-migrate": "^0.11.1",
+    "db-migrate-mysql": "^1.1.10",
     "eslint-config-airbnb-base": "^13.0.0",
     "nodemon": "^1.18.3",
     "tap": "^12.0.1"

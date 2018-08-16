@@ -47,7 +47,7 @@ const spec = {
           }
         },
         requestBody: {
-          $ref: '#/components/requestBodies/Card'
+          $ref: '#/components/requestBodies/card'
         }
       },
     }

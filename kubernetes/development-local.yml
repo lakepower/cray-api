@@ -23,6 +23,18 @@ spec:
     app: mysql
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: cray
+  labels:
+    app: mysql
+data:
+  my.cnf: |
+    [mysqld]
+    default-authentication-plugin=mysql_native_password
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: mysql
@@ -30,6 +42,19 @@ metadata:
   labels:
     app: mysql
 spec:
+  initContainers:
+  - name: init-mysql
+    image: mysql:8.0.12
+    command:
+    - bash
+    - "-c"
+    - |
+      cp /mnt/config-map/my.cnf /mnt/conf.d/
+    volumeMounts:
+    - name: conf
+      mountPath: /mnt/conf.d
+    - name: config-map
+      mountPath: /mnt/config-map
   containers:
   - name: mysql
     image: mysql:8.0.12
@@ -50,12 +75,32 @@ spec:
     volumeMounts:
     - name: local
       mountPath: /var/lib/mysql
+    - name: conf
+      mountPath: /etc/mysql/conf.d
+#    livenessProbe:
+#      exec:
+#        command: ["mysqladmin", "ping"]
+#      initialDelaySeconds: 30
+#      periodSeconds: 10
+#      timeoutSeconds: 5
+#    readinessProbe:
+#      exec:
+#        # Check we can execute queries over TCP (skip-networking is off).
+#        command: ["mysql", "-u", "root", "-h", "127.0.0.1", "-e", "SELECT 1"]
+#      initialDelaySeconds: 5
+#      periodSeconds: 2
+#      timeoutSeconds: 1
   volumes:
+  - name: conf
+    emptyDir: {}
   - name: local
     hostPath:
       # Change this to a local directory $LOCAL_DIR/data
 #      path: /Users/{user}/Desktop/web/cray/cray-api/data
       type: Directory
+  - name: config-map
+    configMap:
+      name: mysql
 ---
 apiVersion: v1
 kind: Service

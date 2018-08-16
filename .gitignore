@@ -75,6 +75,8 @@ typings/
 .idea
 
 // Custom Ignored Files and Directories
+*.ignore.*
 ignore/
 data
+data2
 *.env

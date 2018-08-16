@@ -1,6 +1,6 @@
 # cray-api
 
-Edit the volume path in `kubernetes/mysql-local.yml` to a local folder
+Edit the volume path in `kubernetes/development-local.yml` to a local folder
 
 Start database using kubernetes
 ```bash
@@ -20,3 +20,8 @@ npm run develop
 Prerequisites
 - docker for mac (https://www.docker.com/products/docker-desktop) with kubernetes installed
 - https://github.com/creationix/nvm
+- use db-migrate to update the database or use `npm run db:update`
+
+```bash
+npm install db-migrate -g
+```
