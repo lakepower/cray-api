@@ -5,6 +5,7 @@
     "database": "cray",
     "port": "30000",
     "user": "root",
-    "password": "supersecret"
+    "password": "supersecret",
+    "multipleStatements": true
   }
 }

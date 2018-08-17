@@ -25,3 +25,8 @@ Prerequisites
 ```bash
 npm install db-migrate -g
 ```
+
+Creating Migrations
+```bash
+db-migrate create [migration_name] --sql-file
+```
